@@ -1,7 +1,7 @@
 export default function Home(){
     return (
     <h1>
-        commit!
+        commit 2!
     </h1>
     )
 }

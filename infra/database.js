@@ -1,5 +1,4 @@
-import pkg from "pg";
-const { Client } = pkg;
+import { Client } from "pg";
 
 async function query(queryObject) {
   const client = new Client({
@@ -9,17 +8,12 @@ async function query(queryObject) {
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
   });
-
-  try {
-    await client.connect();
-    const result = await client.query(queryObject);
-    return result.rows;
-  } catch (error) {
-    console.error("Erro ao executar query:", error);
-    throw error;
-  } finally {
-    await client.end();
-  }
+  await client.connect();
+  const result = await client.query(queryObject);
+  await client.end();
+  return result;
 }
 
-export default query;
+export default {
+  query,
+};

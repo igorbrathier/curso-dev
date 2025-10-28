@@ -38,10 +38,16 @@ async function status(request, response) {
     });
   } catch (error) {
     // Se qualquer "await" acima falhar, ele pula para cá
-    console.error(error);
+    console.error("Erro detalhado:", {
+      message: error.message,
+      code: error.code,
+      stack: error.stack,
+      detail: error.detail,
+    });
     // Envia uma resposta de erro 500
     response.status(500).json({
       error: "Ops, algo deu errado no servidor.",
+      detail: error.message,
     });
   }
 }

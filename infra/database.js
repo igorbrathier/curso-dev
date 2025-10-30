@@ -7,7 +7,10 @@ const pool = new Pool({
   user: process.env.POSTGRES_USER,
   database: process.env.POSTGRES_DB,
   password: process.env.POSTGRES_PASSWORD,
-  ssl: false,
+  ssl: {
+    rejectUnauthorized: false,
+    sslmode: "require",
+  },
 
   // Configurações do pool
   max: 20, // máximo de conexões (padrão: 10)

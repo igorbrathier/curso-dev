@@ -7,16 +7,13 @@ const pool = new Pool({
   user: process.env.POSTGRES_USER,
   database: process.env.POSTGRES_DB,
   password: process.env.POSTGRES_PASSWORD,
-  ssl: {
-    rejectUnauthorized: false,
-    sslmode: "require",
-  },
+  ssl: false,
 
   // Configurações do pool
   max: 20, // máximo de conexões (padrão: 10)
   min: 1, // mínimo de conexões mantidas prontas
   idleTimeoutMillis: 30000, // tempo máximo que uma conexão pode ficar ociosa
-  connectionTimeoutMillis: 15000, // tempo máximo para conseguir uma conexão
+  connectionTimeoutMillis: 2000, // tempo máximo para conseguir uma conexão
 });
 
 // Monitora erros no pool

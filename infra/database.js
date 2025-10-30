@@ -16,7 +16,7 @@ const pool = new Pool({
   max: 20, // máximo de conexões (padrão: 10)
   min: 1, // mínimo de conexões mantidas prontas
   idleTimeoutMillis: 30000, // tempo máximo que uma conexão pode ficar ociosa
-  connectionTimeoutMillis: 2000, // tempo máximo para conseguir uma conexão
+  connectionTimeoutMillis: 15000, // tempo máximo para conseguir uma conexão
 });
 
 // Monitora erros no pool
